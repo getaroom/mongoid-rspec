@@ -37,6 +37,10 @@ module Mongoid
         "Expected #{@klass.inspect} to not #{description}, got #{@klass.inspect} to #{description}"
       end
 
+      # RSpec 3 compatibility
+      alias_method :failure_message, :failure_message_for_should
+      alias_method :failure_message_when_negated, :failure_message_for_should_not
+
       def description
         desc = "have an index for #{@index_fields.inspect}"
         desc << " with options of #{@options.inspect}" if @options

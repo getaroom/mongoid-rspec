@@ -34,7 +34,11 @@ module Mongoid
         def failure_message_for_should_not  
           "Expected #{@klass.inspect} to not #{description}; instead got #{@positive_result_message}"  
         end
-        
+
+        # RSpec 3 compatibility
+        alias_method :failure_message, :failure_message_for_should
+        alias_method :failure_message_when_negated, :failure_message_for_should_not
+
         def description
           "validate #{@type} of #{@field.inspect}"
         end
